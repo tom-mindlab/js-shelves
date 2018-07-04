@@ -7,9 +7,9 @@ async function shelfStitcher() {
 }
 
 class Item {
-	constructor(json_item_obj) {
-		this.name = json_item_obj.name;
-		this.image_source = json_item_obj.URI;
+	constructor(name, URI) {
+		this.name = name;
+		this.image_source = URI;
 	}
 }
 
@@ -30,7 +30,7 @@ const OVERFLOW_CALLBACKS = {
 
 class Shelf extends Item {
 	constructor(json_shelf_obj, json_shelf_types_map, overflow_callback) {
-		super(json_shelf_obj.name, json_shelf_types_map[json_shelf_obj.type] + ".png");
+		super(json_shelf_obj.type, json_shelf_types_map[json_shelf_obj.type]);
 		this.overflow_callback = overflow_callback;
 		this.percentage_width = json_shelf_obj.percent_width;
 	}
@@ -41,7 +41,7 @@ class Shelf extends Item {
 
 	push(item) {
 		if (!(item instanceof Item)) {
-			throw new TypeError("Shelf push expects Item object argument");
+			throw new TypeError("Shelf push method expects Item object argument");
 		} else {
 			// TODO:
 			// 1.   check if we have room for another product (width measurement), invoke overflow callback if there's no room
@@ -61,23 +61,17 @@ class ShelfRack {
 					throw new TypeError("ShelfRack array must consist only of Shelf objects");
 				}
 			}
-		} else {
 			this.shelves = json_shelves_arr;
 		}
 	}
-
-	// fill shelves with images
-	populateShelves() {}
 }
 
 // entry
 $(document).ready(function() {
-	$("#main").append('<img src="./shelves/SINGLE_SHELF.png" width="50%"/>');
-	$("#main").append('<img src="./shelves/SINGLE_SHELF.png" width="50%"/>');
-
 	$.getJSON("./shelves/shelf_types.json", function(shelf_types) {
 		$.getJSON("./data/shelf_test/shelf_layout.json", function(shelf_layout) {
 			let S = new Shelf(shelf_layout.shelves[0], shelf_types.shelf_types, OVERFLOW_CALLBACKS.FAIL);
+			let R = new ShelfRack(Array.of(S));
 		});
 	});
 });
