@@ -1,0 +1,73 @@
+{
+	"layout_count" : 10,
+	"shelf_id" : "double_std",
+	"prop_shelf_height" : 0.9,
+	"quality" : 90,
+	"blur_radius" : 3,
+	"visual_search" : true,
+	"visual_search_text" : "Please find and click on #DISPLAY_NAME# if you would be so kind.",
+	"flicker" : true,
+
+	"items" : [
+
+		{
+			"name" : "Guinness Malta",
+			"image" : "./test_images/MaltaCurrent1.png",
+			"test" : true,
+			"min_items" : 3,
+			"max_items" : 4,
+			"required" : true
+		},
+
+
+		{
+			"image" : "./cameroon/competitor_images/PlanetPomme.png",
+			"min_items" : 3,
+			"max_items" : 4,
+			"test" : true,
+			"weight" : 10
+		},
+		{
+			"image" : "./cameroon/competitor_images/PowerMalt.png",
+			"min_items" : 3,
+			"max_items" : 4,
+			"test" : true,
+			"weight" : 10
+		},
+		{
+			"image" : "./cameroon/competitor_images/TopAnanas.png",
+			"min_items" : 3,
+			"max_items" : 4,
+			"test" : true,
+			"weight" : 10
+		},
+		{
+			"image" : "./cameroon/competitor_images/MaltaTonic.png",
+			"min_items" : 3,
+			"max_items" : 4,
+			"test" : true,
+			"weight" : 10
+		},
+
+
+		{
+			"image" : "./cameroon/competitor_images/Djino.png",
+			"min_items" : 3,
+			"max_items" : 4,
+			"weight" : 1
+		},
+		{
+			"image" : "./cameroon/competitor_images/FantaPlastic.png",
+			"min_items" : 3,
+			"max_items" : 4,
+			"weight" : 1
+		},
+		{
+			"image" : "./cameroon/competitor_images/Orangina.png",
+			"min_items" : 3,
+			"max_items" : 4,
+			"weight" : 1
+		}
+	]
+}
+

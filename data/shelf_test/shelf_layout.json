@@ -1,0 +1,18 @@
+{
+	"shelves": [
+		{
+			"type": "supermarket",
+			"percent_width": 50,
+			"shelves": [
+				{
+					"type": "supermarket",
+					"percent_width": 100
+				}
+			]
+		},
+		{
+			"type": "supermarket",
+			"percent_width": 50
+		}
+	]
+}

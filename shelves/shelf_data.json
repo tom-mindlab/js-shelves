@@ -1,0 +1,89 @@
+{
+	"double_std": {
+		"shelf_count": 2,
+		"image": "DOUBLE_SHELF.png",
+		"shelf_height": 250,
+		"width_class": "standard",
+		"shelf_coordinates": [{
+				"top": 5,
+				"bottom": 260,
+				"x_offset": 110,
+				"width": 1250,
+				"back_3d": 240
+			},
+			{
+				"top": 305,
+				"bottom": 555,
+				"x_offset": 110,
+				"width": 1250,
+				"back_3d": 533
+			}
+		]
+
+	},
+
+	"double_short": {
+		"shelf_count": 2,
+		"image": "DOUBLE_SHELF_SHORT.png",
+		"shelf_height": 250,
+		"width_class": "short",
+		"shelf_coordinates": [{
+				"top": 5,
+				"bottom": 260,
+				"x_offset": 100,
+				"width": 975,
+				"back_3d": 235
+			},
+			{
+				"top": 305,
+				"bottom": 555,
+				"x_offset": 100,
+				"width": 975,
+				"back_3d": 530
+			}
+		]
+	},
+
+	"HeadOnBar": {
+		"shelf_count": 1,
+		"image": "HEADON_BAR.png",
+		"shelf_height": 550,
+		"width_class": "standard",
+		"shelf_coordinates": [{
+			"top": 100,
+			"bottom": 685,
+			"x_offset": 100,
+			"width": 1200,
+			"back_3d": 360
+		}]
+	},
+
+	"single_short": {
+		"shelf_count": 1,
+		"image": "SINGLE_SHELF_SHORT.png",
+		"shelf_height": 340,
+		"width_class": "short",
+		"shelf_coordinates": [{
+			"top": 50,
+			"bottom": 390,
+			"x_offset": 200,
+			"width": 1250,
+			"back_3d": 360
+		}]
+	},
+
+	"single_1": {
+		"shelf_count": 1,
+		"image": "SINGLE_SHELF.png",
+		"shelf_height": 340,
+		"width_class": "long",
+		"shelf_coordinates": [{
+			"top": 50,
+			"bottom": 390,
+			"x_offset": 200,
+			"width": 1923,
+			"back_3d": 360
+		}]
+	}
+
+}
