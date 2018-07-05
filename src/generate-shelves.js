@@ -29,10 +29,11 @@ const OVERFLOW_CALLBACKS = {
 };
 
 class Shelf extends Item {
-	constructor(json_shelf_obj, json_shelf_types_map, overflow_callback) {
-		super(json_shelf_obj.type, json_shelf_types_map[json_shelf_obj.type]);
+	constructor(json_shelf_obj, overflow_callback) {
+		super(json_shelf_obj.name, json_shelf_obj.name);
 		this.overflow_callback = overflow_callback;
 		this.percentage_width = json_shelf_obj.percent_width;
+		this.products = [];
 	}
 
 	pop() {
@@ -52,26 +53,51 @@ class Shelf extends Item {
 }
 
 class ShelfRack {
-	constructor(json_shelves_arr) {
-		if (!Array.isArray(json_shelves_arr)) {
+	constructor(shelves_arr) {
+		if (!Array.isArray(shelves_arr)) {
 			throw new TypeError("ShelfRack must be constructed with array");
-		} else if (json_shelves_arr.length > 0) {
-			for (let s of json_shelves_arr) {
+		} else if (shelves_arr.length > 0) {
+			for (let s of shelves_arr) {
 				if (!(s instanceof Shelf)) {
 					throw new TypeError("ShelfRack array must consist only of Shelf objects");
 				}
 			}
-			this.shelves = json_shelves_arr;
+			this.shelves = shelves_arr;
 		}
 	}
+}
+
+function parseItems(json_obj, item_arr) {
+	if (!Array.isArray(item_arr)) {
+		throw new TypeError("parseItems requires an array-type object to build against");
+	}
+	if (Array.isArray(json_obj)) {
+		for (let i = 0; i < json_obj.length; ++i) {
+			item_arr = parseItems(json_obj[i], item_arr);
+		}
+	} else {
+		if (json_obj.type === "shelf") {
+			item_arr.push(new Shelf(json_obj, OVERFLOW_CALLBACKS.FAIL));
+		} else if (json_obj.type === "product") {
+			item_arr.push(new Product(json_obj));
+		} else {
+			throw new Error('parsed json object with invalid "type" property: ' + json_obj.type);
+		}
+		// here we scan for nested items
+		for (let key in json_obj) {
+			if (Array.isArray(json_obj[key])) {
+				item_arr[item_arr.length - 1].products = parseItems(json_obj[key], item_arr[item_arr.length - 1].products);
+			}
+		}
+	}
+	return item_arr;
 }
 
 // entry
 $(document).ready(function() {
 	$.getJSON("./shelves/shelf_types.json", function(shelf_types) {
 		$.getJSON("./data/shelf_test/shelf_layout.json", function(shelf_layout) {
-			let S = new Shelf(shelf_layout.shelves[0], shelf_types.shelf_types, OVERFLOW_CALLBACKS.FAIL);
-			let R = new ShelfRack(Array.of(S));
+			let R = new ShelfRack(parseItems(shelf_layout.items, new Array()));
 		});
 	});
 });

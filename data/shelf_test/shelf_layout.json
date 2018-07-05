@@ -1,17 +1,25 @@
 {
-	"shelves": [
+	"items": [
 		{
-			"type": "supermarket",
+			"type": "shelf",
+			"name": "supermarket",
 			"percent_width": 50,
-			"shelves": [
+			"items": [
 				{
-					"type": "supermarket",
+					"type": "shelf",
+					"name": "supermarket",
+					"percent_width": 100
+				},
+				{
+					"type": "product",
+					"name": "Carlsberg",
 					"percent_width": 100
 				}
 			]
 		},
 		{
-			"type": "supermarket",
+			"type": "shelf",
+			"name": "supermarket",
 			"percent_width": 50
 		}
 	]
